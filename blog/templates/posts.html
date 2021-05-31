@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title> Первые пробы</title>
+    <title>Blog</title>
 
 </head>
 <body>
@@ -36,32 +36,25 @@
 
 <main>
     <div class="container-fluid" style="background-color: #e2e2e2">
-        <section class="py-5 text-center container">
-            <br><br>
-            <p class="lead fw-bold">hey there! I'm excited to see you here! You can write me right now!</p>
-            <br>
-            <a href="mailto:info@rwpark.com" class="btn btn-secondary">Mail me</a>
-            <br>
-        </section>
 
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    {% for event in events.all %}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="{{ event.image.url }}" class="card-img-top">
-                            <div class="card-body">
-                                <p class="card-text">{{ event.text }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-
-            </div>
-
+        <div class="py-4 px-2">
+            <h1>Recents posts</h1>
         </div>
+        {% for info in infos.all %}
+            <div class="py-4 px-2">
+                <h2>{{ info.title }}</h2>
+            </div>
+            <div class="col-1">
+                <img src="{{ info.image.url }}" width="400px">
+            </div>
+            <div class="py-2">
+                <h4>{{ info.text }}</h4>
+            </div>
+            <div>
+                <h5>{{ info.date }}</h5>
+            </div>
+        {% endfor %}
+    </div>
     </div>
 
 </main>
