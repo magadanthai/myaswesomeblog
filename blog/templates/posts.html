@@ -42,7 +42,8 @@
         </div>
         {% for info in infos.all %}
             <div class="py-4 px-2">
-                <h2>{{ info.title }}</h2>
+            {{ info.id }}
+                <h2><a href="posts/{{ info.id }}">{{ info.title }}</a></h2>
             </div>
             <div class="col-1">
                 <img src="{{ info.image.url }}" width="400px">
