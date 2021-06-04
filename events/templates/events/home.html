@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    {% load static %}
     <title> Первые пробы</title>
 
 </head>
@@ -17,7 +17,7 @@
     {#бар#}
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: teal">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Izoor V3</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Izoor V3</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,9 +25,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active" aria-current="page" href="#">About me</a>
-                    <a class="nav-link" href="admin">admin</a>
+                    <a class="nav-link" href="{% url 'admin:index' %}">admin</a>
                     <a class="nav-link" href="#">Facebook</a>
-                    <a class="nav-link" href="posts">Blog</a>
+                    <a class="nav-link" href="{% url 'posts' %}">Blog</a>
                 </div>
             </div>
         </div>
@@ -37,25 +37,28 @@
 <main>
     <div class="container-fluid" style="background-color: #e2e2e2">
         <section class="py-5 text-center container">
-            <br><br>
-            <p class="lead fw-bold">hey there! I'm excited to see you here! You can write me right now!</p>
-            <br>
+
+            <p class="py-5 lead fw-bold">hey there! I'm excited to see you here! You can write me right now!</p>
+
+            <p>
+                <img src="{% static 'behringerX32.jpg' %}" width="400px">
+            </p>
+
             <a href="mailto:info@rwpark.com" class="btn btn-secondary">Mail me</a>
-            <br>
         </section>
 
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
                     {% for event in events.all %}
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="{{ event.image.url }}" class="card-img-top">
-                            <div class="card-body">
-                                <p class="card-text">{{ event.text }}</p>
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="{{ event.image.url }}" class="card-img-top">
+                                <div class="card-body">
+                                    <p class="card-text">{{ event.text }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
 
